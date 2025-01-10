@@ -1,0 +1,170 @@
+<section class="mt-[115px] w-full flex flex-col gap-4 mb-12 lg:mt-0">
+  <header class="w-full relative">
+    <div class="header-org"></div>
+    <article
+      class="h-[500px] absolute flex justify-between items-end w-full left-0 right-0 bottom-0 px-10 pb-6"
+    >
+      <div class="flex flex-col justify-end">
+        <h2 class="text-4xl text-white font-extrabold Tsha md:text-5xl">
+          {{ organization.name }}
+        </h2>
+        <a routerLink="#" class="text-white text-sm Tsha md:text-lg">{{
+          organization.email
+        }}</a>
+      </div>
+
+      <!-- Acá iría la imagen -->
+
+      <div class=" ">
+        <img
+          *ngIf="organization?.image && organization.image.imageUrl"
+          [src]="organization.image?.imageUrl"
+          alt="Logo voluntime"
+          class="w-[100px] h-[100px] object-cover imageUpload"
+          class="w-[215px] h-[100px] mr-8"
+        />
+      </div>
+    </article>
+  </header>
+  <article class="w-full px-2 sm:px-8">
+    <ul class="flex flex-col gap-16 sm:w-[80%]">
+      <li class="mt-10">
+        <span class="text-2xl font-bold md:text-3xl">
+          Voluntariado en {{ organization.name }}
+        </span>
+        <p class="sm:text-lg md:text-xl mt-6">
+          {{ organization.description }}
+        </p>
+      </li>
+      <li>
+        <span class="text-2xl font-bold md:text-3xl">
+          Tipos de Voluntariados
+        </span>
+        <p class="sm:text-lg md:text-xl mt-6">
+          {{ organization.category }}
+        </p>
+      </li>
+      <li>
+        <span class="text-2xl font-bold md:text-3xl">
+          Duracion de los programas de voluntariados
+        </span>
+        <p class="sm:text-lg md:text-xl mt-6">
+          Cada oportunidad de voluntariado indica el tiempo estimado necesario
+          para completar la tarea. Esto te permite elegir actividades que se
+          ajusten a tu disponibilidad y compromiso. Las organizaciones
+          proporcionan estimaciones que van desde unas pocas horas hasta días o
+          semanas. Tu tiempo y esfuerzo son altamente valorados al unirte a un
+          programa de voluntariado.
+        </p>
+      </li>
+      <li>
+        <span class="text-2xl font-bold md:text-3xl mt-6">
+          Oportunidades de voluntariados ofrecidos
+        </span>
+        <p
+          class="sm:text-lg md:text-xl mt-6"
+          *ngIf="volunteerings.length > 0"
+        ></p>
+        <!-- <ul class="sm:text-lg md:text-xl mt-6 " *ngIf="volunteerings.length > 0">
+          <li *ngFor="let opportunity of volunteerings" class="py-2">
+            ✔{{ opportunity.name }}
+          </li>
+        </ul> -->
+        <table
+          class="w-full divide-y divide-lightGray"
+          *ngIf="volunteerings.length > 0"
+        >
+          <thead class="w-full bg-darkSlateBlue">
+            <tr class="text-white font-semibold text-xs sm:text-sm uppercase">
+              <th
+                class="px-6 py-3 bg-gray-50 text-left leading-4 tracking-wider"
+              >
+                Nombre del proyecto
+              </th>
+              <th
+                class="px-6 py-3 bg-gray-50 text-left leading-4 tracking-wider"
+              >
+                Descripción
+              </th>
+              <th
+                class="px-6 py-3 bg-gray-50 text-left leading-4 tracking-wider"
+              >
+                Categoría
+              </th>
+              <th
+                class="px-6 py-3 bg-gray-50 text-left leading-4 tracking-wider"
+              >
+                Ubicación
+              </th>
+              <th
+                class="px-6 py-3 bg-gray-50 text-left leading-4 tracking-wider"
+              >
+                Modalidad
+              </th>
+              <th
+                class="px-6 py-3 bg-gray-50 text-left leading-4 tracking-wider"
+              >
+                Horas
+              </th>
+              <th
+                class="px-6 py-3 bg-gray-50 text-left leading-4 tracking-wider"
+              >
+                Vacantes
+              </th>
+              <th
+                class="px-6 py-3 bg-gray-50 text-left leading-4 tracking-wider"
+              >
+                Acción
+              </th>
+            </tr>
+          </thead>
+          <tbody class="w-full bg-white divide-y divide-lightGray">
+            <tr *ngFor="let item of volunteerings">
+              <td class="px-6 py-4 whitespace-no-wrap">{{ item.name }}</td>
+              <td class="px-6 py-4 whitespace-no-wrap">
+                {{ item.description }}
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap">
+                {{ item.category }}
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap">{{ item.address }}</td>
+              <td class="px-6 py-4 whitespace-no-wrap">
+                {{ item.modeOfwork }}
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap">
+                {{ item.workTime }}
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap">
+                {{ item.vacancies }}
+              </td>
+              <td
+                class="px-6 py-4 whitespace-no-wrap flex items-center justify-center"
+              >
+                <button
+                  mat-icon-button
+                  (click)="viewVolunteering(item.idVolunteering)"
+                >
+                  ver mas
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p
+          class=""
+          *ngIf="volunteerings.length === 0"
+          class="sm:text-lg md:text-xl mt-6"
+        >
+          Si querés ver y conocer más sobre los voluntariados que ofrecemos y
+          sus características,
+          <a
+            href="/auth/volunteer-register"
+            class="font-4 font-semibold text-deepPink"
+            >Registrate</a
+          >.
+        </p>
+      </li>
+    </ul>
+  </article>
+</section>

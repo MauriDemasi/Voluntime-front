@@ -1,0 +1,18 @@
+.mySwiper {
+  width: 98vw !important;
+  padding-inline: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mySwiper .swiper-slide {
+  width: 200px !important;
+}
+
+/* .swiper-button-prev,
+.swiper-button-next {
+  color: #f3f4f6 !important;
+  width: calc(1em / 10px * 10px) !important;
+  height: 2em !important;
+} */
